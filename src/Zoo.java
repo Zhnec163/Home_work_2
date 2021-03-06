@@ -4,12 +4,12 @@ import food.*;
 public class Zoo {
 
     public static void main(String[] args) {
-        Fish fish = new Fish(10);
-        Wolf wolf = new Wolf(7);
-        Bear bear = new Bear(3);
-        Duck duck = new Duck(15);
-        Monkey monkey = new Monkey(8);
-        Cat cat = new Cat(9);
+        Fish fish = new Fish("Сларк");
+        Wolf wolf = new Wolf("Петя");
+        Bear bear = new Bear("Боря");
+        Duck duck = new Duck("Слава");
+        Monkey monkey = new Monkey("Женя");
+        Cat cat = new Cat("Бакс");
 
         Herb herb = new Herb();
         Banana banana = new Banana();
@@ -25,22 +25,21 @@ public class Zoo {
         Worker worker = new Worker();
 
         for (int i = 0; i < animals.length; i++){
-            System.out.println((i + 1) + " " + animals[i].getName());
+            System.out.println((i + 1) + " " + animals[i].getAnimal());
             if(Voice.class.isAssignableFrom(animals[i].getClass())){
                 System.out.print("Говорит: ");
                 worker.getVoice((Voice)animals[i]);
                 System.out.println();
             }
             for (int j = 0; j < foods.length; j++){
-                System.out.println("Даем " + animals[i].getName() + ": " + foods[j].getFoodName());
+                System.out.println("Даем " + animals[i].getAnimal() + ": " + foods[j].getFoodName());
                 worker.feed(foods[j], animals[i]);
             }
             System.out.println();
         }
 
-        Swim[] pond = { new Fish(5), new Duck(3), new Fish(6)};
+        Swim[] pond = { new Fish("Слардар"), new Duck("Костя"), new Fish("Тайдхантер")};
 
-        System.out.println("\n");
         for (Swim item : pond) {
             item.swim();
         }

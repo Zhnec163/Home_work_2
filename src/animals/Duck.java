@@ -2,18 +2,23 @@ package animals;
 
 import food.Food;
 import food.Grass;
+import food.Meat;
 
 public class Duck extends Herbivore implements Run, Swim, Voice{
 
-    public Duck(int satiety){
+    public Duck(String name){
         this.satiety = satiety;
-        this.name = "Утка";
+        this.animal = "Утка";
+        this.size = AviarySize.LITTLE;
+        this.name = name;
     }
 
     public int getSatiety() {
         return satiety;
     }
+    public String getAnimal() { return animal; }
     public String getName() { return name; }
+    public AviarySize getSize() { return size; }
 
     public void run() {
         System.out.println("Утка побежала");
@@ -28,15 +33,27 @@ public class Duck extends Herbivore implements Run, Swim, Voice{
     }
     public void silence() { System.out.println("Утка наконец то успокоилась"); }
     public void eat(Food food) {
-        if(food instanceof Grass){
-            addSatiety();
-        } else {
-            System.out.println("Не съедобно для утки!");
+        try {
+            if (food instanceof Grass) {
+                addSatiety();
+            } else {
+                throw new WrongFoodException();
+            }
+        } catch (WrongFoodException ex){
+            System.out.println(ex.getException() + ", дайте что то другое!");
         }
     }
 
     private void addSatiety(){
         satiety += 5;
         System.out.println("Утку покормили, сытость : " + satiety);
+    }
+
+    public boolean equals(Object obj) {
+        if(obj instanceof Duck) return true;
+        return false;
+    }
+    public int hashCode() {
+        return (super.hashCode())/10;
     }
 }
