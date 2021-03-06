@@ -6,6 +6,6 @@ public class Worker {
         animal.eat(food);
     }
     public void getVoice(Voice animal){
-        System.out.println(animal.voice());
+        System.out.print(animal.voice());
     }
 }
