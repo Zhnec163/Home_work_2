@@ -43,5 +43,20 @@ public class Zoo {
         for (Swim item : pond) {
             item.swim();
         }
+        System.out.println("\n");
+
+        Aviary<Carnivorous> a1 = new Aviary<>(AviarySize.MIDDLE, Carnivorous.class);
+        a1.addAnimal(fish);
+        a1.addAnimal(bear);
+        System.out.println(a1.getTypeAviary() + "\n");
+
+        Aviary<Herbivore> a2 = new Aviary<>(AviarySize.MIDDLE, Herbivore.class);
+        a2.addAnimal(cat);
+        a2.addAnimal(duck);
+        a2.removeAnimal(duck);
+        System.out.println(a2.getTypeAviary() + "\n");
+
+        a2.getAnimalByName("Слава");
+        a2.getAnimalByName("Бакс");
     }
 }
