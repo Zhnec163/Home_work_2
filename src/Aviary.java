@@ -26,15 +26,16 @@ public class Aviary<T> {
             System.out.println("Животное слишком большое для этого вальера");
         }
     }
+
     public void removeAnimal(T animal){
         aviary.remove(animal);
         System.out.println("Животное удалено из вольера");
     }
+
     public T getAnimalByName(String name){
-        var animal = getKeyFromValue(aviary, name);
-        if (animal != null ){
+        if (getKeyFromValue(aviary, name) != null ){
             System.out.println("Вы позвали " + name);
-            return animal;
+            return getKeyFromValue(aviary, name);
         }
         System.out.println("Животного с таким именем нет!");
         return null;

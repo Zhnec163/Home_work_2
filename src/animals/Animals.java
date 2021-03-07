@@ -3,7 +3,7 @@ package animals;
 import food.Food;
 
 public abstract class Animals {
-    public abstract void eat(Food food);
+    public abstract void eat(Food food, Animals animals);
     protected int satiety;
     public abstract int getSatiety();
     protected String animal;
